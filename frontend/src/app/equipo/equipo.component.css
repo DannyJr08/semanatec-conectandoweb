@@ -1,0 +1,12 @@
+p{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 20px;
+    color: #707C8A;
+}
+
+.imgEquipo{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}

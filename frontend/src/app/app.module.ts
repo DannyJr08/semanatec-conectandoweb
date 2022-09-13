@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NosotrosComponent } from './nosotros/nosotros.component';
+import { EquipoComponent } from './equipo/equipo.component';
 
 const appRoutes : Routes = [
   {path:'', component: InicioComponent}
@@ -16,7 +18,9 @@ const appRoutes : Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    InicioComponent
+    InicioComponent,
+    NosotrosComponent,
+    EquipoComponent
   ],
   imports: [
     BrowserModule,
