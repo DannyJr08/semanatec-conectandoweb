@@ -1,6 +1,7 @@
 //Librerias a usar
 const express = require("express");
 const cors = require("cors");
+const firebase = require("firebase/app");
 const Ent = require("./config.js");
 const app = express();
 
@@ -30,6 +31,20 @@ app.post("/createUser", async (req, res) => {
     const data = req.body;
     await Ent.Usuario.add(data);
     res.send({ msg: "Usuario registrado correctamente" })
+});
+app.post("/createList", async (req, res) => {
+    const dataL = req.body;
+    await Ent.Lista.add(dataL);
+    res.send({ msg: "Lista registrada correctamente" })
+});
+app.post("/createReminder", async (req, res) => {
+    const dataR = req.body;
+    await Ent.Recordatorio.add({
+        id_list: dataR.id_list,
+        content : dataR.content,
+        date : firebase.firestore.FieldValue.serverTimestamp()
+    });
+    res.send({ msg: "Recordatorio registrado correctamente" })
 });
 
 //Update
