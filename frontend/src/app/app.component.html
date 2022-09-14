@@ -3,7 +3,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat&display=swap" rel="stylesheet">
 
 <div>
-  <header></header>
-  <log-in></log-in>
+  <header *ngIf="router != '/hola'"></header>
+  <router-outlet></router-outlet>
   <pie></pie>
 </div>
