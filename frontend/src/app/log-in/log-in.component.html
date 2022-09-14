@@ -1,0 +1,10 @@
+<div class="login">
+    <form class="custom-form" method="post">
+        <h1>Login</h1>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Correo" required="required" />
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required="required" />
+        <button class="custom-button" type="submit" (click)="login()">Log in</button>
+        <hr>
+        <button class="google-login-btn">Login with Google </button>
+    </form>
+</div>
