@@ -24,12 +24,12 @@ export class InicioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.getDaysFromDate(11, 2020)
+    this.getDaysFromDate(9, 2022)
   }
 
   getDaysFromDate(month: any, year: any) {
 
-    const startDate = moment.utc(`${year}/${month}/01`)
+    const startDate = moment.utc(`${year}/${month}/02`)
     const endDate = startDate.clone().endOf('month')
     this.dateSelect = startDate;
 
