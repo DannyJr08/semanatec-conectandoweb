@@ -1,0 +1,29 @@
+<section style="position: relative;">
+    <img src="../../assets/images/banner.png">
+    <h1 style="font-family: Monsterrat, sans-serif; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 8.888vw;">INICIO</h1>
+</section>
+
+<div class="wrapper-calendar div-cal">
+	<div class="header-calendar div-cal">
+		<div class="div-cal">
+			<button (click)="changeMonth(-1)" class="btn-prev">Antes</button>
+		</div>
+		<h1>{{dateSelect | date:'MMMM, yyyy'}}</h1>
+		<div class="div-cal">
+			<button (click)="changeMonth(1)" class="btn-next">Siguiente</button>
+		</div>
+	</div>
+	<ol>
+		<li *ngFor="let day of week" class="day-name">{{day | slice:0:3}}</li>
+
+        <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+         *ngFor="let day of monthSelect;let first = first">
+			<span>{{day?.value}}</span>
+		</li>
+	</ol>
+</div>
+
+<hr>
+<div class="div-cal">
+	Fecha: {{dateValue | date}}
+</div>
