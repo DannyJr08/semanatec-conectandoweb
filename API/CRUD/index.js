@@ -42,12 +42,20 @@ app.get("/reminder", async (req, res) => {
 //POST (Create)
 app.post("/createUser", async (req, res) => {
     const data = req.body;
-    await Ent.Usuario.add({
-        email: data.email,
-        hash: cyrb53(data.hash, 5),
-        signature: data.signature
-    });
-    res.send({ msg: "Usuario registrado correctamente" })
+    const snapshot = await Ent.Usuario.where("email", "==", data.email).get();
+    const does_exist = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    if (does_exist.length == 0 ){
+        await Ent.Usuario.add({
+            email: data.email,
+            hash: cyrb53(data.hash, 5),
+            signature: data.signature
+        });
+        res.send({ msg: "Usuario registrado correctamente" })
+    }
+    else{
+        res.send({ msg: "Usuario ya existente"})
+    }
+    
 });
 app.post("/createList", async (req, res) => {
     const dataL = req.body;
