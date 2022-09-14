@@ -7,10 +7,12 @@ import { FooterComponent } from './footer/footer.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NosotrosComponent } from './nosotros/nosotros.component';
-import { EquipoComponent } from './equipo/equipo.component';
+import { RecordatoriosComponent } from './recordatorios/recordatorios.component';
 
 const appRoutes : Routes = [
-  {path:'', component: InicioComponent}
+  {path:'', component: InicioComponent},
+  {path:'nosotros', component: NosotrosComponent},
+  {path:'recordatorios', component: RecordatoriosComponent}
 ];
 
 @NgModule({
@@ -20,7 +22,7 @@ const appRoutes : Routes = [
     FooterComponent,
     InicioComponent,
     NosotrosComponent,
-    EquipoComponent
+    RecordatoriosComponent
   ],
   imports: [
     BrowserModule,
