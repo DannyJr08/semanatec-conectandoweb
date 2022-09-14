@@ -11,6 +11,8 @@ import { RecordatoriosComponent } from './recordatorios/recordatorios.component'
 import { LogInComponent } from './log-in/log-in.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatListModule } from '@angular/material/list';
 
 const appRoutes : Routes = [
   {path:'', component: LogInComponent},
@@ -33,7 +35,9 @@ const appRoutes : Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
