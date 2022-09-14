@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes : Routes = [
-  {path:'', component: InicioComponent},
+  {path:'', component: LogInComponent},
+  {path:'inicio', component: InicioComponent},
   {path:'nosotros', component: NosotrosComponent},
   {path:'recordatorios', component: RecordatoriosComponent}
 ];
