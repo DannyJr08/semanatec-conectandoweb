@@ -25,14 +25,13 @@ const appRoutes : Routes = [
     FooterComponent,
     InicioComponent,
     NosotrosComponent,
+    LogInComponent,
     RecordatoriosComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    RecordatoriosComponent,
-    LogInComponent,
     HttpClientModule
   ],
   providers: [],
