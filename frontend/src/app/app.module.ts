@@ -8,6 +8,9 @@ import { InicioComponent } from './inicio/inicio.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { RecordatoriosComponent } from './recordatorios/recordatorios.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes : Routes = [
   {path:'', component: InicioComponent},
@@ -26,7 +29,11 @@ const appRoutes : Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    RecordatoriosComponent,
+    LogInComponent,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
