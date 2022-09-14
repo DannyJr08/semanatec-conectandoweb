@@ -13,7 +13,5 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const Usuario = db.collection("Usuario");
-const Lista = db.collection("Lista");
 module.exports = Usuario;
-module.exports = Lista;
 console.log("Conectado a la base de datos.")
