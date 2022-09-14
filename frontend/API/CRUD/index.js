@@ -146,4 +146,4 @@ app.delete("/deleteList", async (req, res) => {
     res.send({ msg: mns });
 });
 
-app.listen(4200, () => console.log("Server iniciado en el puerto 4200"))
+app.listen(8080, () => console.log("Server iniciado en el puerto 8080"))
