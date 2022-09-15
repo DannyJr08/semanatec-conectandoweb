@@ -100,7 +100,9 @@ app.delete("/deleteUser", async (req, res) => {
 app.delete("/deleteReminder", async (req, res) => {
     const idList = req.body.id_list;
     const content = req.body.content;
-    const date = req.body.date;
+    const day = req.body.day;
+    const month = req.body.month;
+    const year = req.body.year;
 
     // dateComplete = dateComplete.split("$");
     // const date = dateComplete[0].split("-");
@@ -114,7 +116,8 @@ app.delete("/deleteReminder", async (req, res) => {
     const snapshot = await Ent.Recordatorio.get();
     snapshot.forEach(doc => {
         var data = doc.data();
-        if (data.id_list == idList && data.content == content && data.date.seconds == dateFirebase.seconds) {
+        if (data.id_list == idList && data.content == content && 
+            data.day == day && data.month == month && data.year == year) {
             Ent.Recordatorio.doc(`${doc.id}`).delete();
             mns = "Recordatorio Eliminado"
         }
