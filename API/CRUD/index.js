@@ -88,6 +88,21 @@ app.get("/reminder", async (req, res) => {
     }
 });
 
+app.get("/reminderListName/:data", async (req, res) => {
+    try {
+        var info = req.params.data
+        const name = info[0]
+        const snapshotL = await Ent.Lista.where(name, "==", "name").get();
+        const listL = snapshotL.docs.map((doc) => ({ id: doc.id, ...doc.data() }));  
+        const snapshotR = await Ent.Recordatorio.where("id_list", "==", listL.id).get();
+        const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));       
+        res.send(listR);
+        console.log("GET de los recordatorios filtrados con id lista con exito");
+    } catch (error) {
+        console.log("Error en GET todos los recordatorios filtrados" + error);
+    }
+});
+
 app.get("/reminderList/:data", async (req, res) => {
     try {
         var info = req.params.data
@@ -100,6 +115,7 @@ app.get("/reminderList/:data", async (req, res) => {
         console.log("Error en GET todos los recordatorios filtrados" + error);
     }
 });
+
 
 
 //POST (Create)
@@ -135,7 +151,6 @@ app.post("/createList", async (req, res) => {
     } catch (error) {
         console.log("Error en POST de Lista")
     }
-
 });
 app.post("/createReminder", async (req, res) => {
     try {
