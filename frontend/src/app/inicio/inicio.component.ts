@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from "src/app/services/api.service";
 import { Router } from '@angular/router';
 import * as moment from 'moment'
-
+import { myStorage } from 'src/app/services/api.service';
 @Component({
   selector: 'inicio',
   templateUrl: './inicio.component.html',
@@ -13,7 +13,7 @@ import * as moment from 'moment'
 
 export class InicioComponent implements OnInit {
 
-  constructor(public userService: UsersService, private logApi: ApiService, private router: Router) {
+  constructor(public userService: UsersService, private logApi: ApiService, private router: Router, private myStorage: myStorage) {
     this.logApi.getData().subscribe(
       (resp) => {
         this.arrayList = resp
