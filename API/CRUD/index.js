@@ -140,6 +140,7 @@ app.post("/createList", async (req, res) => {
 app.post("/createReminder", async (req, res) => {
     try {
         const dataR = req.body;
+        console.log(dataR);
         await Ent.Recordatorio.add({
             id_list: dataR.id_list,
             content: dataR.content,
