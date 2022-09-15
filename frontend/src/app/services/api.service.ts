@@ -47,4 +47,12 @@ export class ApiService{
         )
 
     }
+
+    getRem(element:any) {
+
+        return this.HTTP.get(
+            this.userURL+"reminderList/"+element.id
+        )
+
+    }
 }

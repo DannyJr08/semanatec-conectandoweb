@@ -25,6 +25,8 @@ export class LogInComponent implements OnInit {
         // JSON.stringify(resp)
         if (Object.keys(resp).length > 0) {
           console.log(resp)
+          JSON.stringify(resp)
+          localStorage.setItem("User", JSON.stringify(resp));
           this.router.navigate(['inicio']);
         }
       }

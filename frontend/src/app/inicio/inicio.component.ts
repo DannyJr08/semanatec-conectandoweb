@@ -20,9 +20,20 @@ export class InicioComponent implements OnInit {
         console.log(resp)
       }
     )
+
+    // this.arrayList.forEach(element => {
+      // console.log(element)
+      // this.logApi.getRem(element).subscribe(
+      //   (resp) => {
+      //     this.arrayRem = resp
+      //     console.log(resp)
+      //   }
+      // )
+    // });
   }
 
   arrayList: any;
+  arrayRem: any;
 
   week: any = [
     "Lunes",

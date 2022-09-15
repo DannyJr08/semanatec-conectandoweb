@@ -9,7 +9,7 @@
 		<ul class="list-group lista">
 			<li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of arrayList">
 			  {{item.name}}
-			  <span class="badge bg-primary rounded-pill">1</span>
+			  <span class="badge bg-primary rounded-pill">.</span>
 			</li>
 		</ul>
 	</div>
@@ -29,6 +29,7 @@
 			<li class="li-cal" (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
 			 *ngFor="let day of monthSelect;let first = first">
 				<span>{{day?.value}}</span>
+				<!-- <span class="badge bg-primary rounded-pill">.</span> -->
 			</li>
 		</ol>
 	</div>
