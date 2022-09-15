@@ -48,11 +48,89 @@ export class ApiService{
 
     }
 
+    getDataByUser(id: string) {
+
+        return this.HTTP.get(
+            this.userURL+"listUser/"+id
+        )
+
+    }
+
     getRem(element:any) {
 
         return this.HTTP.get(
             this.userURL+"reminderList/"+element.id
         )
 
+    }
+
+    createList(nombre:string) {
+
+        return this.HTTP.post(
+            this.userURL+"createList/",
+            {
+                name: nombre,
+                id_user: "kHrsvxBt5VzHgbogBFqq"
+            }
+        )
+
+    }
+
+    delList(nombre:string, id:string) {
+
+        return this.HTTP.delete(
+            this.userURL+"deleteList/"+id+"$kHrsvxBt5VzHgbogBFqq$"+nombre
+        )
+
+    }
+
+    getItem(nombre:string, date:string, id:string) {
+
+        return this.HTTP.get(
+            this.userURL+"reminderList/"+id
+        )
+
+    }
+
+    createItem(nombre:string, date:string, id:string) {
+
+        return this.HTTP.post(
+            this.userURL+"createReminder",
+            {
+                "id_list": id,
+                "content": nombre
+            }
+            
+        )
+
+    }
+}
+
+export class myStorage {
+    public user;
+    public list;
+    public reminder;
+    constructor() {
+        this.user = '';
+        this.list = '';
+        this.reminder = '';
+    }
+    getUser() {
+        return this.user;
+    }
+    getList() {
+        return this.list;
+    }
+    getReminder() {
+        return this.reminder;
+    }
+    setUser(data: any) {
+        this.user = data;
+    }
+    setList(data: any) {
+        this.list = data;
+    }
+    setReminder(data: any) {
+        this.reminder = data;
     }
 }

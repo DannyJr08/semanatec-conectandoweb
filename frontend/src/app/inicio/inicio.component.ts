@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from "../users/users.service";
-import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService } from "src/app/services/api.service";
+import { ApiService, myStorage } from "src/app/services/api.service";
 import { Router } from '@angular/router';
 import * as moment from 'moment'
 
@@ -13,11 +12,17 @@ import * as moment from 'moment'
 
 export class InicioComponent implements OnInit {
 
-  constructor(public userService: UsersService, private logApi: ApiService, private router: Router) {
+  constructor(public userService: UsersService, private logApi: ApiService, private router: Router, private _myStorage: myStorage) {
+    var usuario = this._myStorage.getUser()
+    usuario = JSON.stringify(usuario)
+    console.log(usuario)
+    console.log(usuario)
+    console.log(usuario)
+
     this.logApi.getData().subscribe(
       (resp) => {
         this.arrayList = resp
-        console.log(resp)
+        // console.log(resp)
       }
     )
 

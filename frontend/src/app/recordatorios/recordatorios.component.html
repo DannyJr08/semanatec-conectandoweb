@@ -25,14 +25,51 @@
 
                 <mat-selection-list #list [(ngModel)]="selectedOptions" [multiple]="false" (ngModelChange)="onNgModelChange($event)">
                     <mat-list-option *ngFor="let tta of taskTypeAreas" [value]="tta.name">
-                        {{tta.name}}
+                        <div class="row">
+                            <div class="col-10">
+                                {{tta.name}}
+                            </div>
+                            <div class="col-2">
+                            <button class="btn btn-danger btn-borra" (click)="deleteList(tta.name,tta.id)">X</button>
+                            </div>
+                        </div>
                     </mat-list-option>
                 </mat-selection-list>
+
+                <br>
+                <input #newList placeholder="Nombre" class="form-control añadirLis" required id="addList" />
+                
+                <button class="btn btn-warning" (click)="addList(newList.value)">Añadir Lista</button>
             </div>
         </div>
     </div>
     <div class="col-7 m-1 recordatorios">
         <h2 class="text-center">Recordatorios</h2>
         <h2 class="text-center">{{ selectedOptions }}</h2>
+
+        <ul>
+            <li *ngFor="let item of items">
+                <div class="row">
+                    <div class="col-10">
+                        Descripción: {{item.description}}
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-danger btn-borra" (click)="deleteItem(item.description)">X</button>
+                    </div>
+                    <div class="col-12">
+                        Fecha: {{item.date.toLocaleDateString()}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+        
+        <br>
+        <input #descr placeholder="Descripción" 
+        class="form-control añadirRec" required id="addItemInput" />
+        <input #fecha placeholder="Fecha" 
+        class="form-control añadirRec" required id="addItemInput" type="date" />
+        
+        <button class="btn btn-info" (click)="addItem(descr.value, fecha.value)">Añadir Recordatorio</button>
+
     </div>
 </div>
