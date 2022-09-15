@@ -253,7 +253,7 @@ app.delete("/deleteList/:data", async (req, res) => {
         });*/
 
         res.send({ msg: mns });
-        console.log(msg);
+        console.log(mns);
     } catch (error) {
         console.log("Error en DELETE de lista");
     }
