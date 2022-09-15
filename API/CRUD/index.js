@@ -31,27 +31,27 @@ app.get("/user", async (req, res) => {
         console.log("Error en GET todos los usuarios");
     }
 });
-app.get("/user/:email", async (req, res) => {
+app.get("/userOne/:data", async (req, res) => {
     try {
-        const emailUser = req.params.email
+        var info = req.params.data
+        info = info.split("$")
+        const emailUser = info[0]
+        const pass = cyrb53(info[1], 5)
         const snapshotU = await Ent.Usuario.get();
 
         snapshotU.forEach(doc => {
             var data = doc.data();
-            if (data.email == emailUser) {
-                Ent.Usuario.doc(`${doc.id}`).delete();
-                mns = "Usuario Eliminado"
+            if (data.email == emailUser && data.hash == pass) {
+                res.send(data);
             }
         });
-
-        const listU = snapshotU.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        res.send(listU);
-        console.log("GET de usuarios con exito");
+        console.log("GET de usuario con exito");
     } catch (error) {
-        console.log("Error en GET usuarios");        
+        console.log("Error en GET usuario");        
     }
 
 });
+
 app.get("/list", async (req, res) => {
     try {
         const snapshot = await Ent.Lista.get();
