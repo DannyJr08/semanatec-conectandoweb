@@ -92,7 +92,7 @@ app.get("/reminderListName/:data", async (req, res) => {
         var info = req.params.data
         const snapshotL = await Ent.Lista.where("name", "==", info).get();
         const listL = snapshotL.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        const objL = data.reduce((a, c) => ({...a, ...c}), {});
+        const objL = lislL.reduce((a, c) => ({...a, ...c}), {});
         console.log(objL);
         const snapshotR = await Ent.Recordatorio.where("id_list", "==", listL.id).get();
         const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
