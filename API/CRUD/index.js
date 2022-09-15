@@ -8,16 +8,16 @@ app.use(express.json());
 app.use(cors());
 
 //Funcion Hash de dominio publico 
-const cyrb53 = function(str, seed = 0) {
+const cyrb53 = function (str, seed = 0) {
     let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
     for (let i = 0, ch; i < str.length; i++) {
         ch = str.charCodeAt(i);
         h1 = Math.imul(h1 ^ ch, 2654435761);
         h2 = Math.imul(h2 ^ ch, 1597334677);
     }
-    h1 = Math.imul(h1 ^ (h1>>>16), 2246822507) ^ Math.imul(h2 ^ (h2>>>13), 3266489909);
-    h2 = Math.imul(h2 ^ (h2>>>16), 2246822507) ^ Math.imul(h1 ^ (h1>>>13), 3266489909);
-    return 4294967296 * (2097151 & h2) + (h1>>>0);
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
 //GET (Read)
@@ -47,9 +47,8 @@ app.get("/userOne/:data", async (req, res) => {
         });
         console.log("GET de usuario con exito");
     } catch (error) {
-        console.log("Error en GET usuario");        
+        console.log("Error en GET usuario");
     }
-
 });
 
 app.get("/list", async (req, res) => {
@@ -63,10 +62,24 @@ app.get("/list", async (req, res) => {
     }
 
 });
+
 app.get("/reminder", async (req, res) => {
     try {
         const snapshotR = await Ent.Recordatorio.get();
         const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        res.send(listR);
+        console.log("GET de todas los recordatorios con exito");
+    } catch (error) {
+        console.log("Error en GET todos los recordatorios");
+    }
+});
+
+app.get("/reminderList/", async (req, res) => {
+    try {
+        const snapshotR = await Ent.Recordatorio.get();
+        const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        const snapshotL = await Ent.Lista.where(doc.id, "==", "id_list").get();
+        const listL = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         res.send(listR);
         console.log("GET de todas los recordatorios con exito");
     } catch (error) {
@@ -81,7 +94,7 @@ app.post("/createUser", async (req, res) => {
         const data = req.body;
         const snapshot = await Ent.Usuario.where("email", "==", data.email).get();
         const does_exist = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        if (does_exist.length == 0 ){
+        if (does_exist.length == 0) {
             await Ent.Usuario.add({
                 email: data.email,
                 hash: cyrb53(data.hash, 5),
@@ -90,14 +103,14 @@ app.post("/createUser", async (req, res) => {
             res.send({ msg: "Usuario registrado correctamente" });
             console.log("Usuario registrado correctamente");
         }
-        else{
-            res.send({ msg: "Usuario ya existente"});
+        else {
+            res.send({ msg: "Usuario ya existente" });
             console.log("Usuario ya existente");
         }
     } catch (error) {
         console.log("Error en POST de usuario");
     }
-    
+
 });
 app.post("/createList", async (req, res) => {
     try {
@@ -115,11 +128,11 @@ app.post("/createReminder", async (req, res) => {
         const dataR = req.body;
         await Ent.Recordatorio.add({
             id_list: dataR.id_list,
-            content : dataR.content,
-            day : dataR.day,
-            month : dataR.month,
-            year : dataR.year,
-            Timestamp : Date.now()
+            content: dataR.content,
+            day: dataR.day,
+            month: dataR.month,
+            year: dataR.year,
+            Timestamp: Date.now()
         });
         res.send({ msg: "Recordatorio registrado correctamente" });
         console.log("Recordatorio registrado correctamente");
@@ -134,7 +147,7 @@ app.post("/update", async (req, res) => {
         const id = req.body.id;
         delete req.body.id;
         const data = req.body;
-        await  Ent.Usuario.doc(id).update(data);
+        await Ent.Usuario.doc(id).update(data);
         res.send({ msg: "Usuario actualizado" });
         console.log("Usuario actualizado");
     } catch (error) {
@@ -169,26 +182,26 @@ app.delete("/deleteReminder", async (req, res) => {
         const day = req.body.day;
         const month = req.body.month;
         const year = req.body.year;
-    
+
         // dateComplete = dateComplete.split("$");
         // const date = dateComplete[0].split("-");
         // const hour = dateComplete[1];
-    
-    
+
+
         // console.log(dateFirebase);
-    
+
         var mns = "Recordatorio No Existente";
-    
+
         const snapshot = await Ent.Recordatorio.get();
         snapshot.forEach(doc => {
             var data = doc.data();
-            if (data.id_list == idList && data.content == content && 
+            if (data.id_list == idList && data.content == content &&
                 data.day == day && data.month == month && data.year == year) {
                 Ent.Recordatorio.doc(`${doc.id}`).delete();
                 mns = "Recordatorio Eliminado"
             }
         });
-        
+
         res.send({ msg: mns });
         console.log(msg);
     } catch (error) {
@@ -201,9 +214,9 @@ app.delete("/deleteList", async (req, res) => {
         const idList = req.body.id;
         const idUser = req.body.id_user;
         const name = req.body.name;
-    
+
         var mns = "Lista No Existente";
-    
+
         const snapshotRec = await Ent.Recordatorio.get();
         const snapshot = await Ent.Lista.get();
         snapshot.forEach(doc => {
@@ -219,7 +232,7 @@ app.delete("/deleteList", async (req, res) => {
                 mns = "Lista & Recordatorios Eliminados"
             }
         });
-        
+
         res.send({ msg: mns });
         console.log(msg);
     } catch (error) {
