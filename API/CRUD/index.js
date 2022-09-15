@@ -66,7 +66,10 @@ app.post("/createReminder", async (req, res) => {
     await Ent.Recordatorio.add({
         id_list: dataR.id_list,
         content : dataR.content,
-        date : Date.now()
+        day : dataR.day,
+        month : dataR.month,
+        year : dataR.year,
+        Timestamp : Date.now()
     });
     res.send({ msg: "Recordatorio registrado correctamente" })
 });
