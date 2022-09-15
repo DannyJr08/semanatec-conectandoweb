@@ -80,7 +80,7 @@ app.get("/ListgetID/:data", async (req, res) => {
     try {
         var listid = req.params.data
         const snapshotL = await Ent.Lista.where("doc.id", "==", listid).get();
-        const ListL = snapshotL.doc.map((doc) => ({ id: doc.id, ...doc.data() }));
+        const listL = snapshotL.doc.map((doc) => ({ id: doc.id, ...doc.data() }));
         res.send(listL);
         console.log("GET de listas filtrados con el id de usuario con exito");
     } catch (error) {
