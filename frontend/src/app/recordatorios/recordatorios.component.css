@@ -1,0 +1,23 @@
+.recordatorios{
+    background: #FEE2B9;
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-height: calc(100vh - 250px);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.caja{
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.listas {
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-height: calc(100vh - 250px);
+    font-family: 'Montserrat', sans-serif;
+}
