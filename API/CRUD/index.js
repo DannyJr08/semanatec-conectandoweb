@@ -2,7 +2,6 @@
 const express = require("express");
 const cors = require("cors");
 const firebase = require("firebase/app");
-const {Timestamp} = require('firebase-admin/firestore');
 const Ent = require("./config.js");
 const app = express();
 app.use(express.json());
