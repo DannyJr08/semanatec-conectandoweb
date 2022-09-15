@@ -66,7 +66,7 @@ app.post("/createReminder", async (req, res) => {
     await Ent.Recordatorio.add({
         id_list: dataR.id_list,
         content : dataR.content,
-        date : firebase.firestore.FieldValue.serverTimestamp()
+        date : Date.now()
     });
     res.send({ msg: "Recordatorio registrado correctamente" })
 });
