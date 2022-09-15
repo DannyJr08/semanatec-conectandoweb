@@ -66,7 +66,6 @@ app.get("/list", async (req, res) => {
 app.get("/ListUser/:data", async (req, res) => {
     try {
         var info = req.params.data
-        const iduser = info[0]
         const snapshotL = await Ent.Lista.where("id_user", "==", iduser).get();  
         const listL = snapshotL.docs.map((doc) => ({ id: doc.id, ...doc.data() }));     
         res.send(listL);
@@ -79,8 +78,9 @@ app.get("/ListUser/:data", async (req, res) => {
 app.get("/ListgetID/:data", async (req, res) => {
     try {
         var listid = req.params.data
-        const snapshotL = await Ent.Lista.where("doc.id", "==", listid).get();
+        const snapshotL = await Ent.Lista.get();
         const listL = snapshotL.doc.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log(listL)
         res.send(listL);
         console.log("GET de listas filtrados con el id de usuario con exito");
     } catch (error) {
