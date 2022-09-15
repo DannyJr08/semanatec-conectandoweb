@@ -10,7 +10,6 @@ export class RecordatoriosComponent implements OnInit {
   hoy: number;
   programado: number;
   todo: number;
-  listalistas: string[] = ['Familia', 'Trabajo', 'Compras'];
   constructor() { 
     this.hoy = 2;
     this.programado = 5;
@@ -20,4 +19,23 @@ export class RecordatoriosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  taskTypeAreas: {
+    name: string;
+  }[] = [
+    {
+      name: 'Familia'
+    },
+    {
+      name: 'Trabajo'
+    },
+    {
+      name: 'Compras'
+    },
+  ];
+  selectedOptions: string[] = [];
+
+  onNgModelChange(event: any){
+    console.log('on ng model change', event);
+  }
+  
 }
