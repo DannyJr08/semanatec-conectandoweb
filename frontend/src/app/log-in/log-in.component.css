@@ -3,16 +3,15 @@
 }
 
 h1{
-    font-size: 7vw;
+    font-size: 5vw;
     margin: 0;
     padding: 0;
 }
 
 .custom-form {
-    width: 70.833vw;
+    max-width: 70.833vw;
     height: 310px;
     background: #F3F1F1;
-    padding: 2rem;
     margin: auto;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 7.5vw;
@@ -116,4 +115,8 @@ h1{
     .custom-form input {
         max-height: 80px;
     }
+}
+
+.elem{
+    width: 100%;
 }
