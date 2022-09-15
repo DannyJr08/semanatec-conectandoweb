@@ -78,7 +78,7 @@ app.get("/ListUser/:data", async (req, res) => {
 app.get("/ListgetID/:data", async (req, res) => {
     try {
         var listid = req.params.data
-        const snapshot = await Ent.Lista.where("doc.id", "==", listid).get();
+        const snapshot = await Ent.Lista.where(firebase.firestore.FieldPath.documentId(), "==", listid).get();
         const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         console.log(list)
         res.send(list);
@@ -119,7 +119,7 @@ app.get("/reminderListName/:data", async (req, res) => {
 app.get("/reminderList/:data", async (req, res) => {
     try {
         var idlist = req.params.data
-        const snapshotR = await Ent.Recordatorio.where(firebase.firestore.FieldPath.documentId(), "==", idlist).get();
+        const snapshotR = await Ent.Recordatorio.where("id_list", "==", idlist).get();
         const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));       
         res.send(listR);
         console.log("GET de los recordatorios filtrados con id lista con exito");
