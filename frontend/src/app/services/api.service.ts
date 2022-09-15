@@ -18,4 +18,33 @@ export class ApiService{
         )
 
     }
+    
+    userAuth(logUser:any) {
+
+        return this.HTTP.get(
+            this.userURL+"userOne/"+logUser.value.email+"$"+logUser.value.password
+        )
+
+    }
+
+    userReg(logUser:any) {
+
+        return this.HTTP.post(
+            this.userURL+"createUser",
+            {
+                email: logUser.value.email,
+                hash: logUser.value.password,
+                signature: logUser.value.email
+            }
+        )
+
+    }
+
+    getData() {
+
+        return this.HTTP.get(
+            this.userURL+"list"
+        )
+
+    }
 }

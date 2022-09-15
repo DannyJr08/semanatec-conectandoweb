@@ -1,11 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from "../users/users.service";
+import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService } from "src/app/services/api.service";
+import { Router } from '@angular/router';
 import * as moment from 'moment'
+
 @Component({
   selector: 'inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
+
 export class InicioComponent implements OnInit {
+
+  constructor(public userService: UsersService, private logApi: ApiService, private router: Router) {
+    this.logApi.getData().subscribe(
+      (resp) => {
+        this.arrayList = resp
+        console.log(resp)
+      }
+    )
+  }
+
+  arrayList: any;
 
   week: any = [
     "Lunes",
@@ -20,8 +37,6 @@ export class InicioComponent implements OnInit {
   monthSelect!: any[];
   dateSelect: any;
   dateValue: any;
-
-  constructor() { }
 
   ngOnInit(): void {
     this.getDaysFromDate(9, 2022)

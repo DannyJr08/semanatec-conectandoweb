@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 
-const appRoutes : Routes = [
+export const appRoutes : Routes = [
   {path:'', component: LogInComponent},
   {path:'inicio', component: InicioComponent},
   {path:'nosotros', component: NosotrosComponent},
