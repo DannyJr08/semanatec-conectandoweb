@@ -173,6 +173,7 @@ app.post("/update", async (req, res) => {
 app.delete("/deleteUser/:data", async (req, res) => {
     try {
         const info = req.params.data;
+        console.log(info);
         const email = info[0];
         var mns = "Usuario No Existente";
         const snapshot = await Ent.Usuario.get();
@@ -194,6 +195,7 @@ app.delete("/deleteReminder/:data", async (req, res) => {
     try {
         var info = req.params.data;
         info = info.split("$")
+        console.log(info);
         const idList = info[0];
         const day = info[1];
         const month = info[2];
@@ -240,7 +242,7 @@ app.delete("/deleteList/:data", async (req, res) => {
         const snapshot = await Ent.Lista.get();
         snapshot.forEach(doc => {
             var data = doc.data();
-            if (doc.id == idList && data.id_user == idUser && data.name == name) {
+            if (doc.id == idList || (data.id_user == idUser && data.name == name)) {
                 snapshotRec.forEach(docR => {
                     var dataR = docR.data();
                     if (dataR.id_list == idList) {
