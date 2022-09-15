@@ -67,8 +67,7 @@ app.get("/ListUser/:data", async (req, res) => {
     try {
         var info = req.params.data
         const iduser = info[0]
-        const snapshotL = await Ent.Lista.where("id_user", "==", iduser).get();
-        const listL = snapshotL.docs.map((doc) => ({ id: doc.id, ...doc.data() }));       
+        const snapshotL = await Ent.Lista.where("id_user", "==", iduser).get();       
         res.send(listL);
         console.log("GET de listas filtrados con el id de usuario con exito");
     } catch (error) {
@@ -93,7 +92,8 @@ app.get("/reminderListName/:data", async (req, res) => {
         var info = req.params.data
         const snapshotL = await Ent.Lista.where("name", "==", info).get();
         const listL = snapshotL.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        console.log(listL.id + " " + listL.name);
+        const objL = data.reduce((a, c) => ({...a, ...c}), {});
+        console.log(objL);
         const snapshotR = await Ent.Recordatorio.where("id_list", "==", listL.id).get();
         const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         console.log(listR);       
