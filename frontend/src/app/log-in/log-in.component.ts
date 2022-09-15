@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from "../users/users.service";
+import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService } from "src/app/services/api.service";
 
 @Component({
   selector: 'log-in',
@@ -8,16 +10,20 @@ import { UsersService } from "../users/users.service";
 })
 export class LogInComponent implements OnInit {
 
-  email: String = "";
-  password: String = "";
+  constructor(public userService: UsersService, private logApi: ApiService) {}
 
-  constructor(public userService: UsersService) {}
+  logUser = new FormGroup({
+    email: new FormControl(),
+    password: new FormControl()
+  })
 
   login() {
-    const user = {email: this.email, password: this.password};
-    this.userService.login(user).subscribe( (data: any) => {
-      console.log(data);
-    });
+    this.logApi.userGet().subscribe(
+      (resp) => {
+        console.log(resp)
+      }
+    )
+    // console.log(this.logUser.value.email);      
   }
 
   ngOnInit(): void {
