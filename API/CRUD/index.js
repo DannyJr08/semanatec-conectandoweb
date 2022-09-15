@@ -236,7 +236,7 @@ app.delete("/deleteList/:data", async (req, res) => {
 
         var mns = "Lista No Existente";
 
-    /*    const snapshotRec = await Ent.Recordatorio.get();
+        const snapshotRec = await Ent.Recordatorio.get();
         const snapshot = await Ent.Lista.get();
         snapshot.forEach(doc => {
             var data = doc.data();
@@ -250,7 +250,7 @@ app.delete("/deleteList/:data", async (req, res) => {
                 Ent.Lista.doc(`${doc.id}`).delete();
                 mns = "Lista & Recordatorios Eliminados"
             }
-        });*/
+        });
 
         res.send({ msg: mns });
         console.log(mns);
