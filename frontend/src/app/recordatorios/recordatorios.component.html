@@ -23,17 +23,16 @@
             <div class="col-12 m-1 listas" style="background-color: #d7fefe;">
                 <h2 class="text-center">Mis listas</h2>
 
-                <mat-selection-list #listas [multiple]="false">
-                    <mat-list-option *ngFor="let list of listalistas" [value]="list">
-                        {{list}}
+                <mat-selection-list #list [(ngModel)]="selectedOptions" [multiple]="false" (ngModelChange)="onNgModelChange($event)">
+                    <mat-list-option *ngFor="let tta of taskTypeAreas" [value]="tta.name">
+                        {{tta.name}}
                     </mat-list-option>
                 </mat-selection-list>
-                
-                
             </div>
         </div>
     </div>
     <div class="col-7 m-1 recordatorios">
         <h2 class="text-center">Recordatorios</h2>
+        <h2 class="text-center">{{ selectedOptions }}</h2>
     </div>
 </div>
