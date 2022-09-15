@@ -78,7 +78,7 @@ app.get("/ListUser/:data", async (req, res) => {
 app.get("/ListgetID/:data", async (req, res) => {
     try {
         var listid = req.params.data
-        const snapshot = await Ent.Lista.get();
+        const snapshot = await Ent.Lista.where("doc.id", "==", listid).get();
         const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         console.log(list)
         res.send(list);
