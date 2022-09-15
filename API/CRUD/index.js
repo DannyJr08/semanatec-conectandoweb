@@ -78,7 +78,7 @@ app.get("/reminderList/:data", async (req, res) => {
     try {
         var info = req.params.data
         const idlist = info[0]
-        const snapshotR = await Ent.Recordatorio.where("id_list", "==", idlist).findget();
+        const snapshotR = await Ent.Recordatorio.where("id_list", "==", idlist).get();
         const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));       
         res.send(listR);
         console.log("GET de todas los recordatorios con exito");
