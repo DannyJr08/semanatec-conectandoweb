@@ -2,27 +2,28 @@ h1{
     font-family: 'Montserrat';
         font-style: normal;
         font-weight: 500;
-        font-size: 80px;
-        line-height: 108px;
+        font-size: 5.555vw;
+        line-height: 7.5vw;
 }
 .txtNosotos{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
-    line-height: 30px;
+    font-size: 2.222vw;
+    line-height: 2.083vw;
     color: #707C8A;
 }
 
 p{
     font-family: 'Montserrat';
     font-style: normal;
-    font-size: 20px;
+    font-size: 1.388vw;
     color: #707C8A;
 }
 
 .imgEquipo{
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 8.333vw;
+    height: 8.333vw;
 }
+

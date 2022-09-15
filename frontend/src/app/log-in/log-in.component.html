@@ -1,12 +1,10 @@
 <div class="login">
-    <form class="custom-form" [formGroup] = "logUser">
+    <form id="vista-registro-login" class="custom-form" [formGroup] = "logUser">
         <h1>Login</h1>
         <input type="email" id="email" placeholder="Correo" required="required" formControlName = "email"/>
         <input type="password" id="password" placeholder="Contraseña" required="required" formControlName = "password"/>
         <button class="custom-button" type="submit" (click)="login()">Log in</button>
         <hr>
         <button class="custom-button" type="submit" (click)="register()">Register</button>
-        <hr>
-        <button class="google-login-btn">Login with Google </button>
     </form>
 </div>
