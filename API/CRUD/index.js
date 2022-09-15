@@ -192,7 +192,7 @@ app.delete("/deleteUser/:data", async (req, res) => {
 
 app.delete("/deleteReminder/:data", async (req, res) => {
     try {
-        const info = req.params.data;
+        var info = req.params.data;
         info = info.split("$")
         const idList = info[0];
         const day = info[1];
@@ -227,7 +227,7 @@ app.delete("/deleteReminder/:data", async (req, res) => {
 
 app.delete("/deleteList/:data", async (req, res) => {
     try {
-        const info = req.params.data;
+        var info = req.params.data;
         info = info.split("$")
         console.log(info)
         const idList = info[0];
