@@ -78,10 +78,10 @@ app.get("/ListUser/:data", async (req, res) => {
 app.get("/ListgetID/:data", async (req, res) => {
     try {
         var listid = req.params.data
-        const snapshotL = await Ent.Lista.get();
-        const listL = snapshotL.doc.map((doc) => ({ id: doc.id, ...doc.data() }));
-        console.log(listL)
-        res.send(listL);
+        const snapshot = await Ent.Lista.get();
+        const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log(list)
+        res.send(list);
         console.log("GET de listas filtrados con el id de usuario con exito");
     } catch (error) {
         console.log("Error en GET todos los recordatorios" + error);
