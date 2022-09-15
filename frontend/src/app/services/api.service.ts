@@ -56,14 +56,6 @@ export class ApiService{
 
     }
 
-    getRem(element:any) {
-
-        return this.HTTP.get(
-            this.userURL+"reminderList/"+element.id
-        )
-
-    }
-
     createList(nombre:string) {
 
         return this.HTTP.post(
@@ -84,7 +76,24 @@ export class ApiService{
 
     }
 
-    getItem(nombre:string, date:string, id:string) {
+    delRem(id: string, day: string, month: string, year: string) {
+
+        return this.HTTP.delete(
+            this.userURL+"deleteReminder/"+id+"$"+day+"$"+month+"$"+year
+        )
+
+    }
+
+    getListID(nombre: string) {
+
+        return this.HTTP.get(
+            this.userURL+"ListgetbyName/"+nombre
+        )
+
+    }
+
+    getItem(id: string) {
+        console.log(id)
 
         return this.HTTP.get(
             this.userURL+"reminderList/"+id
@@ -92,13 +101,24 @@ export class ApiService{
 
     }
 
-    createItem(nombre:string, date:string, id:string) {
+    getFullItem(name:any) {
+
+        return this.HTTP.get(
+            this.userURL+"reminderListName/"+name
+        )
+
+    }
+
+    createItem(nombre:string, d:any, id:string) {
 
         return this.HTTP.post(
             this.userURL+"createReminder",
             {
-                "id_list": id,
-                "content": nombre
+                id_list: id,
+                content: nombre,
+                day: d[2],
+                month: d[1],
+                year: d[0]
             }
             
         )

@@ -6,20 +6,6 @@
 <div class="row m-3">
     <div class="col-3 offset-1">
         <div class="row me-3">
-            <div class="col-5 m-1 caja text-center text-wrap" style="background-color: #D4FF8D;">
-                <p>Hoy</p>
-                <p>{{hoy}}</p>
-            </div>
-            <div class="col-5 m-1 caja text-center text-wrap" style="background-color: #F3F593;">
-                <p>Programado</p>
-                <p>{{programado}}</p>
-            </div>
-            <div class="col-5 m-1 caja text-center text-wrap" style="background-color: #CCCCCC;">
-                <p>To do</p>
-                <p> {{todo}}</p>
-            </div>
-        </div>
-        <div class="row me-3">
             <div class="col-12 m-1 listas" style="background-color: #d7fefe;">
                 <h2 class="text-center">Mis listas</h2>
 
@@ -48,16 +34,16 @@
         <h2 class="text-center">{{ selectedOptions }}</h2>
 
         <ul>
-            <li *ngFor="let item of items">
+            <li *ngFor="let item of reminder">
                 <div class="row">
                     <div class="col-10">
-                        Descripción: {{item.description}}
+                        Descripción: {{item.content}}
                     </div>
                     <div class="col-2">
-                        <button class="btn btn-danger btn-borra" (click)="deleteItem(item.description)">X</button>
+                        <button class="btn btn-danger btn-borra" (click)="deleteItem(item.id_list,item.day,item.month,item.year)">X</button>
                     </div>
                     <div class="col-12">
-                        Fecha: {{item.date.toLocaleDateString()}}
+                        Fecha: {{item.day}}/{{item.month}}/{{item.year}}
                     </div>
                 </div>
             </li>
