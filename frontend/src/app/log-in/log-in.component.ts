@@ -3,6 +3,7 @@ import { UsersService } from "../users/users.service";
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from "src/app/services/api.service";
 import { Router } from '@angular/router';
+import { myStorage } from 'src/app/services/api.service';
 
 @Component({
   selector: 'log-in',
@@ -12,7 +13,9 @@ import { Router } from '@angular/router';
 
 export class LogInComponent implements OnInit {
 
-  constructor(public userService: UsersService, private logApi: ApiService, private router: Router) {}
+  constructor(public userService: UsersService, private logApi: ApiService, private router: Router, private _myStorage: myStorage) {
+
+  }
 
   logUser = new FormGroup({
     email: new FormControl(),
@@ -25,8 +28,7 @@ export class LogInComponent implements OnInit {
         // JSON.stringify(resp)
         if (Object.keys(resp).length > 0) {
           console.log(resp)
-          JSON.stringify(resp)
-          localStorage.setItem("User", JSON.stringify(resp));
+          this._myStorage.setUser(resp);
           this.router.navigate(['inicio']);
         }
       }
@@ -39,6 +41,7 @@ export class LogInComponent implements OnInit {
       (resp) => {
         if (Object.keys(resp).length > 0) {
           console.log(resp)
+          this._myStorage.setUser(resp);
           this.router.navigate(['inicio']);
         }
       }

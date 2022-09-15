@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
+import { myStorage } from './services/api.service';
 
 export const appRoutes : Routes = [
   {path:'', component: LogInComponent},
@@ -41,7 +42,7 @@ export const appRoutes : Routes = [
     MatListModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [myStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
