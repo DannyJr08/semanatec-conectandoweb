@@ -83,7 +83,7 @@ app.get("/reminderList/:data", async (req, res) => {
         res.send(listR);
         console.log("GET de todas los recordatorios con exito");
     } catch (error) {
-        console.log("Error en GET todos los recordatorios");
+        console.log("Error en GET todos los recordatorios" + error);
     }
 });
 
