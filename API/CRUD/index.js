@@ -77,7 +77,6 @@ app.get("/reminder", async (req, res) => {
 app.get("/reminderList/:data", async (req, res) => {
     try {
         var info = req.params.data
-        info = info.split("$")
         const idlist = info[0]
         const snapshotR = await Ent.Recordatorio.where("id_list", "==", idlist).findget();
         const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));       
