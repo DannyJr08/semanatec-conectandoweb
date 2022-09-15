@@ -93,9 +93,11 @@ app.get("/reminderListName/:data", async (req, res) => {
         var info = req.params.data
         const name = info[0]
         const snapshotL = await Ent.Lista.where("name", "==", name).get();
-        const listL = snapshotL.docs.map((doc) => ({ id: doc.id, ...doc.data() }));  
+        const listL = snapshotL.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log(listL);
         const snapshotR = await Ent.Recordatorio.where("id_list", "==", listL.id).get();
-        const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));       
+        const listR = snapshotR.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log(listR);       
         res.send(listR);
         console.log("GET de los recordatorios filtrados con id lista con exito");
     } catch (error) {
