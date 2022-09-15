@@ -172,7 +172,7 @@ app.post("/update", async (req, res) => {
 // Delete
 app.delete("/deleteUser/:data", async (req, res) => {
     try {
-        const info = req.parameter.data;
+        const info = req.params.data;
         const email = info[0];
         var mns = "Usuario No Existente";
         const snapshot = await Ent.Usuario.get();
@@ -192,7 +192,7 @@ app.delete("/deleteUser/:data", async (req, res) => {
 
 app.delete("/deleteReminder/:data", async (req, res) => {
     try {
-        const info = req.parameter.data;
+        const info = req.params.data;
         info = info.split("$")
         const idList = info[0];
         const day = info[1];
@@ -227,7 +227,7 @@ app.delete("/deleteReminder/:data", async (req, res) => {
 
 app.delete("/deleteList/:data", async (req, res) => {
     try {
-        const info = req.parameter.data;
+        const info = req.params.data;
         info = info.split("$")
         const idList = info[0];
         const idUser = info[1];
