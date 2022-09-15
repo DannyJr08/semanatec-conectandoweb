@@ -108,7 +108,7 @@ app.delete("/deleteReminder", async (req, res) => {
     // const date = dateComplete[0].split("-");
     // const hour = dateComplete[1];
 
-    const dateFirebase = Timestamp.fromDate(new Date(date));
+    
     // console.log(dateFirebase);
 
     var mns = "Recordatorio No Existente";
