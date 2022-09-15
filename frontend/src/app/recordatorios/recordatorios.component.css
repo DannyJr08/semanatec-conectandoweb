@@ -21,3 +21,13 @@
     min-height: calc(100vh - 250px);
     font-family: 'Montserrat', sans-serif;
 }
+
+.añadirRec{
+    max-width: 300px;
+}
+
+.btn-borra{
+    max-width: 40px;
+    max-height: 40px;
+    font-size: 10px;
+}
