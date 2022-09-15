@@ -1,0 +1,61 @@
+<section style="position: relative;">
+    <img src="../../assets/images/banner.png">
+    <h1 style="font-family: Monsterrat, sans-serif; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 8.888vw;">RECORDATORIOS</h1>
+</section>
+
+<div class="row m-3">
+    <div class="col-3 offset-1">
+        <div class="row me-3">
+            <div class="col-12 m-1 listas" style="background-color: #d7fefe;">
+                <h2 class="text-center">Mis listas</h2>
+
+                <mat-selection-list #list [(ngModel)]="selectedOptions" [multiple]="false" (ngModelChange)="onNgModelChange($event)">
+                    <mat-list-option *ngFor="let tta of taskTypeAreas" [value]="tta.name">
+                        <div class="row">
+                            <div class="col-10">
+                                {{tta.name}}
+                            </div>
+                            <div class="col-2">
+                            <button class="btn btn-danger btn-borra" (click)="deleteList(tta.name,tta.id)">X</button>
+                            </div>
+                        </div>
+                    </mat-list-option>
+                </mat-selection-list>
+
+                <br>
+                <input #newList placeholder="Nombre" class="form-control añadirLis" required id="addList" />
+                
+                <button class="btn btn-warning" (click)="addList(newList.value)">Añadir Lista</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-7 m-1 recordatorios">
+        <h2 class="text-center">Recordatorios</h2>
+        <h2 class="text-center">{{ selectedOptions }}</h2>
+
+        <ul>
+            <li *ngFor="let item of reminder">
+                <div class="row">
+                    <div class="col-10">
+                        Descripción: {{item.content}}
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-danger btn-borra" (click)="deleteItem(item.id_list,item.day,item.month,item.year)">X</button>
+                    </div>
+                    <div class="col-12">
+                        Fecha: {{item.day}}/{{item.month}}/{{item.year}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+        
+        <br>
+        <input #descr placeholder="Descripción" 
+        class="form-control añadirRec" required id="addItemInput" />
+        <input #fecha placeholder="Fecha" 
+        class="form-control añadirRec" required id="addItemInput" type="date" />
+        
+        <button class="btn btn-info" (click)="addItem(descr.value, fecha.value)">Añadir Recordatorio</button>
+
+    </div>
+</div>

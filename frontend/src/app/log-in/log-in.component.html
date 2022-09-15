@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="login">
+            <form id="vista-registro-login" class="custom-form p-4" [formGroup]="logUser">
+                <h1>Login</h1>
+                <div class="elem" >
+                    <input type="email" id="email" placeholder="Correo" required="required" formControlName="email" />
+                    <input type="password" id="password" placeholder="Contraseña" required="required" formControlName="password" />
+                    <button class="custom-button" type="submit" (click)="login()">Log in</button>
+                    <hr>
+                    <button class="custom-button" type="submit" (click)="register()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<section style="position: relative;">
+    <img src="../../assets/images/banner.png">
+    <h1 style="font-family: Monsterrat, sans-serif; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 8.888vw;">INICIO</h1>
+</section>
+
+
+<div style="display: flex;">
+	<div>
+		<ul class="list-group lista">
+			<li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of arrayList">
+			  {{item.name}}
+			  <span class="badge bg-primary rounded-pill">.</span>
+			</li>
+		</ul>
+	</div>
+	<div class="wrapper-calendar div-cal2">
+		<div class="header-calendar div-cal div-cal2">
+			<div class="div-cal">
+				<button (click)="changeMonth(-1)" class="btn-prev" style="font-size: 2vw; font-family: Montserrat, sans-serif;">Antes</button>
+			</div>
+			<h1>{{dateSelect | date:'MMMM, yyyy'}}</h1>
+			<div class="div-cal">
+				<button (click)="changeMonth(1)" class="btn-next" style="font-size: 2vw; font-family: Montserrat, sans-serif;">Siguiente</button>
+			</div>
+		</div>
+		<ol class="ol-cal">
+			<li *ngFor="let day of week" class="day-name li-cal">{{day | slice:0:3}}</li>
+	
+			<li class="li-cal" (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+			 *ngFor="let day of monthSelect;let first = first">
+				<span>{{day?.value}}</span>
+				<!-- <span class="badge bg-primary rounded-pill">.</span> -->
+			</li>
+		</ol>
+	</div>
+	
+	<hr>
+	<!-- <div class="div-cal">
+		Fecha: {{dateValue | date}}
+	</div> -->
+</div>
